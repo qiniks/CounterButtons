@@ -5,6 +5,7 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Button
@@ -44,6 +45,8 @@ fun Greeting(name: String, modifier: Modifier = Modifier) {
     var lastClickedButtom by remember { mutableStateOf("None") }
 
     Column {
+        Row{
+
         Button(onClick = { counter1++; lastClickedButtom = "Button 1" }) {
             Text("Count: $counter1")
         }
@@ -52,6 +55,7 @@ fun Greeting(name: String, modifier: Modifier = Modifier) {
         }
         Button(onClick = { counter3++; lastClickedButtom = "Button 3" }) {
             Text("Count: $counter3")
+        }
         }
 
         Text(lastClickedButtom)
