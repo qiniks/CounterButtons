@@ -16,8 +16,10 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
 import com.example.myapplication.ui.theme.MyApplicationTheme
 
 class MainActivity : ComponentActivity() {
@@ -44,21 +46,25 @@ fun Greeting(name: String, modifier: Modifier = Modifier) {
     var counter3 by remember { mutableStateOf(0) }
     var lastClickedButtom by remember { mutableStateOf("None") }
 
-    Column {
-        Row{
+    Column(horizontalAlignment = Alignment.CenterHorizontally, modifier = modifier.padding(16.dp)) {
+        Row (modifier) {
+            Text(text = "Counter 1: $counter1")
+            Text(text = "Counter 2: $counter2")
+            Text(text = "Counter 3: $counter3")
+        }
+        Row {
+            Button(onClick = { counter1++; lastClickedButtom = "Button 1" }) {
+                Text("Button 1");
+            }
+            Button(onClick = { counter2++; lastClickedButtom = "Button 2" }) {
+                Text("Button 2")
+            }
+            Button(onClick = { counter3++; lastClickedButtom = "Button 3" }) {
+                Text("Button 3")
+            }
+        }
 
-        Button(onClick = { counter1++; lastClickedButtom = "Button 1" }) {
-            Text("Count: $counter1")
-        }
-        Button(onClick = { counter2++; lastClickedButtom = "Button 2" }) {
-            Text("Count: $counter2")
-        }
-        Button(onClick = { counter3++; lastClickedButtom = "Button 3" }) {
-            Text("Count: $counter3")
-        }
-        }
-
-        Text(lastClickedButtom)
+        Text("Last clicked button: $lastClickedButtom")
     }
 
 }
